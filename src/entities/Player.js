@@ -1,13 +1,14 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-import PlayerLaser from './PlayerLaser';
+import Bullet from './Bullet';
+// eslint-disable-next-line import/no-cycle
+import gameOver from '../scenes/end';
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player');
 
-    this.setData('speed', 200);
-    // this.play('sprPlayer');
+    this.setData('speed', 600);
 
     this.setData('isShooting', false);
     this.setData('enemyMissed', 0);
@@ -24,34 +25,40 @@ class Player extends Entity {
     this.body.velocity.x = this.getData('speed');
   }
 
+  moveUp() {
+    this.body.velocity.y = -this.getData('speed');
+  }
+
+  moveDown() {
+    this.body.velocity.y = this.getData('speed');
+  }
+
   update() {
-    // console.log(this.getData('isShooting'));
-    this.body.setVelocity(0, 0);
+    if (this.body) {
+      this.body.setVelocity(0, 0);
 
-    this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
-    this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
+      this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
+      this.y = Phaser.Math.Clamp(
+        this.y,
+        this.scene.game.config.height - 100,
+        this.scene.game.config.height,
+      );
 
-    if (this.getData('isShooting') === true) {
-      // if (this.getData('shoot')) {
-        const laser = new PlayerLaser(this.scene, this.x, this.y - 50);
-        this.scene.playerLasers.add(laser);
+      if (this.getData('isShooting') === true) {
+        const bullet = new Bullet(this.scene, this.x, this.y - 50);
+        this.scene.bullets.add(bullet);
         this.setData('isShooting', false);
         this.setData('shot', true);
-      // }
-      // if (this.getData('timerShootTick') < this.getData('timerShootDelay')) {
-      //   this.setData('timerShootTick', this.getData('timerShootTick') + 1);
-      // } else {
-
-      //   this.setData('timerShootTick', 0);
-      // }
+      }
     }
   }
 
-  onDestroy() {
+  onDestroy(playerName) {
     this.scene.time.addEvent({
-      delay: 1000,
+      delay: 500,
       callback() {
-        this.scene.scene.start('SceneGameOver');
+        gameOver(this.getData('score'), playerName);
+        this.scene.game.destroy();
       },
       callbackScope: this,
       loop: false,
