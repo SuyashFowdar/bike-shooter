@@ -1,0 +1,20 @@
+
+name: Packages
+
+on: push
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  packages:
+    name: Packages
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Setup Stylelint
+        run: |
+          npm install
