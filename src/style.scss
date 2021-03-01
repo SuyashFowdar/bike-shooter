@@ -1,0 +1,232 @@
+$all:('', 0, 4000px);
+$sm:('-sm', 0, 600px);
+$lg:('-lg', 601px, 4000px);
+
+$breakpoints: ($all, $sm, $lg);
+
+@mixin sm {
+  @media screen and (min-width: nth($sm, 2)) and (max-width: nth($sm, 3)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: nth($lg, 2)) and (max-width: nth($lg, 3)) {
+    @content;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  $point: nth($breakpoint, 1);
+  $min: nth($breakpoint, 2);
+  $max: nth($breakpoint, 3);
+
+  @media screen and (min-width: $min) and (max-width: $max) {
+    .hide#{$point} {
+      display: none;
+    }
+
+    .col#{$point},
+    .col-reverse#{$point},
+    .row-reverse#{$point},
+    .row#{$point} {
+      display: flex;
+    }
+
+    .col#{$point} {
+      flex-direction: column;
+    }
+
+    .col-reverse#{$point} {
+      flex-direction: column-reverse;
+    }
+
+    .row-reverse#{$point} {
+      flex-direction: row-reverse;
+    }
+
+    .main-center#{$point} {
+      justify-content: center;
+    }
+
+    .main-start#{$point} {
+      justify-content: flex-start;
+    }
+
+    .main-end#{$point} {
+      justify-content: flex-end;
+    }
+
+    .main-space-between#{$point} {
+      justify-content: space-between;
+    }
+
+    .main-space-around#{$point} {
+      justify-content: space-around;
+    }
+
+    .cross-center#{$point} {
+      align-items: center;
+    }
+
+    .cross-start#{$point} {
+      align-items: flex-start;
+    }
+
+    .cross-end#{$point} {
+      align-items: flex-end;
+    }
+
+    .cross-baseline#{$point} {
+      align-items: baseline;
+    }
+
+    .flex#{$point} {
+      flex: 1 1;
+    }
+
+    .wrap#{$point} {
+      flex-wrap: wrap;
+    }
+
+    .h-100#{$point} {
+      height: 100%;
+    }
+
+    .shadow-15#{$point} {
+      box-shadow: 0 0 15px 0 rgb(100, 100, 100);
+    }
+
+    .padding8#{$point} {
+      padding: 8px;
+    }
+
+    .margin8#{$point} {
+      margin: 8px;
+    }
+
+    .br3#{$point} {
+      border-radius: 3px;
+    }
+
+    .layout-padding8#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > label,
+      & > a,
+      & > input {
+        padding: 8px;
+      }
+    }
+
+    .layout-padding4#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > label,
+      & > a,
+      & > input {
+        padding: 4px;
+      }
+    }
+
+    .layout-margin8#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > label,
+      & > a,
+      & > input {
+        margin: 8px;
+      }
+    }
+
+    .layout-margin4#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > label,
+      & > a,
+      & > input {
+        margin: 4px;
+      }
+    }
+
+    @for $i from 1 through 20 {
+      $width: percentage($i*5/100);
+
+      .w-#{$i*5}#{$point} {
+        width: $width;
+      }
+    }
+  }
+}
+
+body {
+  margin: 0;
+  background-image: url('assets/img/bg.png');
+  background-size: 120% 120%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  animation-duration: 0.5s;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+h1 {
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  font-size: 48px;
+}
+
+.start-button {
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  border-width: 5px;
+  background-image: linear-gradient(rgb(200, 200, 200), rgb(175, 175, 175), rgb(128, 128, 128));
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  outline: 0;
+
+  &:active {
+    background-image: linear-gradient(rgb(128, 128, 128), rgb(175, 175, 175), rgb(200, 200, 200));
+  }
+}
+
+.name-input {
+  width: 250px;
+  font-size: 24px;
+}
+
+.score-container {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  min-height: 400px;
+  max-height: 400px;
+  padding: 12px;
+}
+
+.leader-board {
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes disappear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
