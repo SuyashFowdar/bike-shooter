@@ -1,5 +1,5 @@
 import 'jest-fix-undefined';
-import { getRequest } from '../src/library';
+import { getRequest } from '../src/logicController';
 
 test('Check request method with GET', () => {
   const req = getRequest('GET');
