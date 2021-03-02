@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 // eslint-disable-next-line import/no-cycle
 import Player from '../entities/Player';
 import Biker from '../entities/Biker';
-import loadGame from './start';
 
 let playerName;
 
@@ -228,36 +227,4 @@ class Game extends Phaser.Scene {
   }
 }
 
-const config = {
-  type: Phaser.WEBGL,
-  backgroundColor: 'transparent',
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { x: 0, y: 0 },
-    },
-  },
-  scene: Game,
-  pixelArt: true,
-  roundPixels: true,
-  'render.transparent': true,
-};
-
-const newGame = (e) => {
-  e.preventDefault();
-  if (e.target.name && e.target.name.value) {
-    playerName = e.target.name.value;
-    document.body.innerHTML = '';
-    // eslint-disable-next-line no-new
-    new Phaser.Game(config);
-    document.getElementsByTagName('canvas')[0].style.animationName = 'appear';
-  }
-};
-
-const loadNewGame = () => {
-  loadGame(newGame);
-};
-
-loadGame(newGame);
-
-export { Game, loadNewGame };
+export default Game;
