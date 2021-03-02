@@ -6,11 +6,11 @@
 
 ## Story
 
-You are a lonely person peacefully living in the desert, far from the noise of the city. And some Mafia start disturbing your peace of mind with their bike.
+You are a lonely person peacefully living in the desert, far from the noise of the city. And some Mafia starts disturbing your peace of mind with their bike.
 
-What they are not aware is that you are a bigger Mafia than them. So you take out your exploding bullet gun and start shooting them one by one. And to keep your self respect, you wouldn't allow more than 5 of them leaving alive.
+What they are not aware of is that you are a bigger Mafia than them. So you take out your exploding bullet gun and start shooting them one by one. And to keep your self-respect, you wouldn't allow more than 5 of them to leave alive.
 
-But stay alert, their bikes are also equiped with exploding bullet guns. They can shoot you anytime, so you have to keep avoiding their bullets too.
+But stay alert, their bikes are also equipped with exploding bullet guns. They can shoot you anytime, so you have to keep avoiding their bullets too.
 
 ## Screenshot
 
@@ -34,8 +34,8 @@ https://krishnzzz.github.io/bike-shooter/
 - Clone the project by running `git clone https://github.com/krishnzzz/bike-shooter.git` on terminal or CMD
 - Make sure you have NodeJS and NPM installed on your PC.
 - Run terminal or CMD from the project directory.
-- Run `npm install` in terminal or CMD to install all required packages for proper running of game.
-- Install and setup a local server.
+- Run `npm install` in terminal or CMD to install all required packages for the proper running of the game.
+- Install and set up a local server.
 - One local server example could be by running `npm i -g live-server` on terminal or CMD.
 - Having live-server install, run `live-server` on terminal or CMD from the dist directory in the project folder.
 - The game will then automatically open in your web browser.
@@ -45,7 +45,7 @@ https://krishnzzz.github.io/bike-shooter/
 - First input your name in the textbox that appears in the middle of the screen.
 - Then press start.
 - Move your hand by using arrow buttons from your keyboard.
-- Press spacebar to shoot.
+- Press the spacebar to shoot.
 - Make sure to neither let 5 bikers leave alive nor let anyone shoot you.
 - Try to shoot as much as biker possible to get the highest score.
 
@@ -94,7 +94,9 @@ Contributions, issues and feature requests are welcome! Start by:
 ## Author
 
 👤 Suyash Fowdar
-Github: [@Krishnzzz](https://github.com/krishnzzz)
+- Github: [@Krishnzzz](https://github.com/krishnzzz)
+- Twitter: [@twitterhandle](https://twitter.com/Krishnzzz)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/suyash-fowdar-22b89514a/)
 
 ## Show your Support
 Give a ⭐ if you like this project!
