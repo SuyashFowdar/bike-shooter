@@ -48,9 +48,7 @@ const getLeaderBoard = () => {
       } else {
         const game = response.result;
         board.innerHTML = '';
-        game.sort((a, b) => {
-          return b.score - a.score
-        });
+        game.sort((a, b) => b.score - a.score);
         for (let i = 0; i < 15; i += 1) {
           el(board, { t: 'div', a: [['class', 'row margin8']] }, playerEl => {
             el(playerEl, { t: 'div', a: [['class', 'w-50']], c: game[i].user });
@@ -72,7 +70,7 @@ const loadGameOver = (receivedScore, playerName, cb) => {
   el(document.body, { t: 'div', a: [['class', 'score-container col cross-center w-40']] }, scoreContainer => {
     el(scoreContainer, { t: 'h2', c: `Score: ${receivedScore}` });
     el(scoreContainer, { t: 'div', a: [['class', 'leader-board w-100 col'], ['id', 'leader-board']] }, leaderBoard => {
-      if (playerName){
+      if (playerName) {
         if (receivedScore) {
           postToLeaderBoard(playerName, receivedScore);
         } else {
@@ -89,4 +87,6 @@ const loadGameOver = (receivedScore, playerName, cb) => {
   });
 };
 
-export { getRequest, loadGame, loadGameOver, getLeaderBoard };
+export {
+  getRequest, loadGame, loadGameOver, getLeaderBoard,
+};

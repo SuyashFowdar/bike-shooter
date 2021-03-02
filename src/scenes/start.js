@@ -35,4 +35,6 @@ loadGame(form => {
   form.addEventListener('submit', (e) => { newGame(e); });
 });
 
-export { newGame, playerName };
+const getPlayerName = () => playerName;
+
+export { newGame, getPlayerName };

@@ -1,9 +1,9 @@
 import { loadGame, loadGameOver } from '../logicController';
 // eslint-disable-next-line import/no-cycle
-import { newGame, playerName } from './start';
+import { newGame, getPlayerName } from './start';
 
 const gameOver = (receivedScore) => {
-  loadGameOver(receivedScore, playerName, button => {
+  loadGameOver(receivedScore, getPlayerName(), button => {
     button.addEventListener('click', () => {
       document.body.innerHTML = '';
       loadGame(form => {
