@@ -15,22 +15,4 @@ const el = (parent, el, cb) => {
   }
 };
 
-const getRequest = (type, body) => {
-  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/rx8Uv4eaK8jKB03z267T/scores/';
-
-  const config = {
-    method: type,
-  };
-
-  if (type === 'POST') {
-    config.headers = {
-      'Content-Type': 'application/json',
-    };
-    config.mode = 'cors';
-    config.body = JSON.stringify(body);
-  }
-
-  return new Request(url, config);
-};
-
-export { el, getRequest };
+export default el;

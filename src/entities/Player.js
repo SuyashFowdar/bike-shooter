@@ -9,7 +9,6 @@ class Player extends Entity {
     super(scene, x, y, key, 'Player');
 
     this.setData('speed', 600);
-
     this.setData('isShooting', false);
     this.setData('enemyMissed', 0);
     this.setData('score', 0);
