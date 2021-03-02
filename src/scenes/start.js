@@ -1,20 +1,38 @@
-import { el } from '../library';
+import Phaser from 'phaser';
+import { loadGame } from '../logicController';
+// eslint-disable-next-line import/no-cycle
+import Game from './Game';
 
-const activateButton = (e) => {
-  const start = document.getElementsByClassName('start-button')[0];
-  if (e.target.value) {
-    start.removeAttribute('disabled');
-  } else {
-    start.setAttribute('disabled', true);
+let playerName;
+
+const config = {
+  type: Phaser.WEBGL,
+  backgroundColor: 'transparent',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { x: 0, y: 0 },
+    },
+  },
+  scene: Game,
+  pixelArt: true,
+  roundPixels: true,
+  'render.transparent': true,
+};
+
+const newGame = (e) => {
+  e.preventDefault();
+  if (e.target.name && e.target.name.value) {
+    playerName = e.target.name.value;
+    document.body.innerHTML = '';
+    // eslint-disable-next-line no-new
+    new Phaser.Game(config);
+    document.getElementsByTagName('canvas')[0].style.animationName = 'appear';
   }
 };
 
-const loadGame = (newGame) => {
-  el(document.body, { t: 'h1', c: 'Bike Shooter' });
-  el(document.body, { t: 'form', e: [{ type: 'submit', func: newGame }], a: [['class', 'col']] }, form => {
-    el(form, { t: 'input', e: [{ type: 'keyup', func: activateButton }], a: [['class', 'name-input margin8 padding8'], ['type', 'text'], ['name', 'name'], ['placeholder', 'Put your name to start'], ['required', true]] });
-    el(form, { t: 'button', c: 'Start Game', a: [['class', 'start-button margin8'], ['disabled', true], ['type', 'submit']] });
-  });
-};
+loadGame(form => {
+  form.addEventListener('submit', (e) => { newGame(e); });
+});
 
-export default loadGame;
+export { newGame, playerName };

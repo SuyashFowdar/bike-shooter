@@ -1,4 +1,4 @@
-import loadGame from '../src/scenes/start';
+import { loadGame } from '../src/logicController';
 
 test('Load form to start game', () => {
   loadGame();
