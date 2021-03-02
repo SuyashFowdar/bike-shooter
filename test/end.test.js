@@ -1,4 +1,3 @@
-import el from '../src/library';
 import { loadGameOver } from '../src/logicController';
 
 document.body.classList.add('col', 'main-center', 'cross-center');
