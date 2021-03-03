@@ -6,8 +6,8 @@ const player = {
   },
   getData(attr) {
     return player[attr];
-  }
-}
+  },
+};
 
 setPlayerData(player);
 

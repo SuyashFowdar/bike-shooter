@@ -94,7 +94,7 @@ const setPlayerData = (player) => {
   player.setData('score', 0);
   player.setData('timerShootDelay', 10);
   player.setData('timerShootTick', player.getData('timerShootDelay') - 1);
-}
+};
 
 export {
   getRequest, loadGame, loadGameOver, getLeaderBoard, setPlayerData,
