@@ -87,6 +87,15 @@ const loadGameOver = (receivedScore, playerName, cb) => {
   });
 };
 
+const setPlayerData = (player) => {
+  player.setData('speed', 600);
+  player.setData('isShooting', false);
+  player.setData('enemyMissed', 0);
+  player.setData('score', 0);
+  player.setData('timerShootDelay', 10);
+  player.setData('timerShootTick', player.getData('timerShootDelay') - 1);
+}
+
 export {
-  getRequest, loadGame, loadGameOver, getLeaderBoard,
+  getRequest, loadGame, loadGameOver, getLeaderBoard, setPlayerData,
 };

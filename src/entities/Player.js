@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
 import Bullet from './Bullet';
+import { setPlayerData } from '../logicController';
 // eslint-disable-next-line import/no-cycle
 import gameOver from '../scenes/end';
 
@@ -8,12 +9,7 @@ class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player');
 
-    this.setData('speed', 600);
-    this.setData('isShooting', false);
-    this.setData('enemyMissed', 0);
-    this.setData('score', 0);
-    this.setData('timerShootDelay', 10);
-    this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
+    setPlayerData(this);
   }
 
   moveLeft() {
