@@ -36,9 +36,10 @@ https://krishnzzz.github.io/bike-shooter/
 - Run terminal or CMD from the project directory.
 - Run `npm install` in terminal or CMD to install all required packages for the proper running of the game.
 - Install and set up a local server.
-- One local server example could be by running `npm i -g live-server` on terminal or CMD.
+- One local server example could be by running `npm i -g live-server` on terminal or CMD. (More details: https://www.npmjs.com/package/live-server)
 - Having live-server install, run `live-server` on terminal or CMD from the dist directory in the project folder.
 - The game will then automatically open in your web browser.
+- To run tests, run `npx jest` from terminal or CMD from the project directory.
 
 ## How to play
 
