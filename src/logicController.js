@@ -38,25 +38,25 @@ const loadGame = (cb) => {
   });
 };
 
-const getLeaderBoard = () => {
-  fetch(getRequest('GET'))
-    .then(response => response.json())
-    .then(response => {
-      const board = document.getElementById('leader-board');
-      if (response.message) {
-        board.innerHTML = `<h3 class="error">${response.message}</h3>`;
-      } else {
-        const game = response.result;
-        board.innerHTML = '';
-        game.sort((a, b) => b.score - a.score);
-        for (let i = 0; i < 15; i += 1) {
-          el(board, { t: 'div', a: [['class', 'row margin8']] }, playerEl => {
-            el(playerEl, { t: 'div', a: [['class', 'w-50']], c: game[i].user });
-            el(playerEl, { t: 'div', a: [['class', 'w-50']], c: game[i].score });
-          });
-        }
-      }
-    });
+const getLeaderBoard = async () => {
+  let response = await fetch(getRequest('GET'));
+  response = await response.json();
+  const board = document.getElementById('leader-board');
+  if (response.message) {
+    board.innerHTML = `<h3 class="error">${response.message}</h3>`;
+  } else {
+    const game = response.result;
+    const max = game.length < 15 ? game.length : 15;
+    board.innerHTML = '';
+    game.sort((a, b) => b.score - a.score);
+    for (let i = 0; i < max; i += 1) {
+      el(board, { t: 'div', a: [['class', 'row margin8']] }, playerEl => {
+        el(playerEl, { t: 'div', a: [['class', 'w-50']], c: game[i].user });
+        el(playerEl, { t: 'div', a: [['class', 'w-50']], c: game[i].score });
+      });
+    }
+  }
+  return response;
 };
 
 const postToLeaderBoard = (playerName, score) => {
